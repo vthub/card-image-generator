@@ -22,7 +22,7 @@ public class AppTest
     @Test
     public void cardHandler()
     {
-        assertThat(get("foo").getStatusCode(), is(200));
+        assertThat(get("card").getStatusCode(), is(200));
     }
 
     private ReceivedResponse get(String path)
