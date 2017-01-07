@@ -13,7 +13,7 @@ public class App
                 .registry(Guice.registry(b -> b.module(Module.class)))
                 .handlers(chain -> chain
                         .register(r -> r.add(new ImageRenderer()))
-                        .path("card", CardGenerationHandler.class)
+                        .path("card", CardHandler.class)
                         .all(ctx -> ctx.render(""))
                 )
         );

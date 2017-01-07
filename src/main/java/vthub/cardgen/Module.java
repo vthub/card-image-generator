@@ -7,7 +7,7 @@ public class Module extends AbstractModule
     @Override
     protected void configure()
     {
-        bind(CardGenerationHandler.class);
-        bind(CardGenerationService.class);
+        bind(CardHandler.class);
+        bind(CardService.class);
     }
 }
