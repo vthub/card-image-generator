@@ -9,5 +9,6 @@ public class Module extends AbstractModule
     {
         bind(CardHandler.class);
         bind(CardService.class);
+        bind(Painter.class).to(DefaultPainter.class);
     }
 }
