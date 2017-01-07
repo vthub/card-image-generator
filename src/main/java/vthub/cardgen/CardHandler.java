@@ -6,7 +6,7 @@ import ratpack.handling.Handler;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class CardGenerationHandler implements Handler
+public class CardHandler implements Handler
 {
     private static final int OFFSET = 10;
 

@@ -1,14 +1,19 @@
 apply plugin: "java"
 
+ext {
+    ratpackVersion = '1.4.4'
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile group: 'io.ratpack', name: 'ratpack-guice', version: '1.4.4'
-    compile group: 'io.ratpack', name: 'ratpack-core', version: '1.4.4'
+    compile group: 'io.ratpack', name: 'ratpack-guice', version: "$ratpackVersion"
+    compile group: 'io.ratpack', name: 'ratpack-core', version: "$ratpackVersion"
 
     runtime 'org.slf4j:slf4j-simple:1.7.10'
 
     testCompile 'junit:junit:4.11'
+    testCompile group: 'io.ratpack', name: 'ratpack-test', version: "$ratpackVersion"
 }
