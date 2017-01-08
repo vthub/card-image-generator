@@ -4,8 +4,12 @@ import ratpack.guice.Guice;
 import ratpack.server.BaseDir;
 import ratpack.server.RatpackServer;
 
+import static java.lang.String.format;
+
 public class App
 {
+
+    public static final String CARD = "card";
 
     public static void main(String[] args) throws Exception {
         RatpackServer.start(s -> s
@@ -13,7 +17,7 @@ public class App
                 .registry(Guice.registry(b -> b.module(Module.class)))
                 .handlers(chain -> chain
                         .register(r -> r.add(new ImageRenderer()))
-                        .path("card", CardHandler.class)
+                        .path(format("card/:%s?", CARD), CardHandler.class)
                         .all(ctx -> ctx.render(""))
                 )
         );

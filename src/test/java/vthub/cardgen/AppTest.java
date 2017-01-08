@@ -25,6 +25,12 @@ public class AppTest
         assertThat(get("card").getStatusCode(), is(200));
     }
 
+    @Test
+    public void cardHandler_WithNumber()
+    {
+        assertThat(get("card/123").getStatusCode(), is(200));
+    }
+
     private ReceivedResponse get(String path)
     {
         return aut.getHttpClient().get(path);
