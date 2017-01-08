@@ -3,6 +3,7 @@ package vthub.cardgen;
 import com.google.inject.Inject;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
+import vthub.cardgen.model.Card;
 
 import static vthub.cardgen.App.CARD;
 
@@ -19,7 +20,8 @@ public class CardHandler implements Handler
     @Override
     public void handle(Context ctx) throws Exception
     {
-        System.out.println(ctx.getPathTokens().get(CARD));
-        ctx.render(service.generate());
+        Card card = new Card();
+        card.setNumber(ctx.getPathTokens().get(CARD));
+        ctx.render(service.generate(card));
     }
 }

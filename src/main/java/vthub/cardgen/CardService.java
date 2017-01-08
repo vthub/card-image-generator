@@ -18,9 +18,9 @@ public class CardService
         this.painter = painter;
     }
 
-    public BufferedImage generate()
+    public BufferedImage generate(Card card)
     {
-        return painter.draw(new Card());
+        return painter.draw(card);
     }
 
 }
