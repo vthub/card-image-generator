@@ -21,7 +21,7 @@ public class CardSizes
     private static final double EXPIRY_FONT_MM = 5.00;
     private static final double NAME_FONT_MM = EXPIRY_FONT_MM;
 
-    private static final int BASE_WIDTH_PX = 800;
+    private static final int BASE_WIDTH_PX = 400;
 
     public static final int OFFSET_PX = 10;
     public static final double RATIO = (double) BASE_WIDTH_PX / WIDTH_MM;
