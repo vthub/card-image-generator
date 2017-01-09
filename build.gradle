@@ -11,6 +11,7 @@ repositories {
 dependencies {
     compile group: 'io.ratpack', name: 'ratpack-guice', version: "$ratpackVersion"
     compile group: 'io.ratpack', name: 'ratpack-core', version: "$ratpackVersion"
+    compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
 
     runtime 'org.slf4j:slf4j-simple:1.7.10'
 

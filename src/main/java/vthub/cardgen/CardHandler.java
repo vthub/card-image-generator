@@ -4,8 +4,12 @@ import com.google.inject.Inject;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
 import vthub.cardgen.model.Card;
+import vthub.cardgen.model.CardBuilder;
+
+import java.util.Optional;
 
 import static vthub.cardgen.App.CARD;
+import static vthub.cardgen.CardGeneratorUtils.generateNumber;
 
 public class CardHandler implements Handler
 {
@@ -18,10 +22,16 @@ public class CardHandler implements Handler
     }
 
     @Override
-    public void handle(Context ctx) throws Exception
+    public void handle(Context context) throws Exception
     {
-        Card card = new Card();
-        card.setNumber(ctx.getPathTokens().get(CARD));
-        ctx.render(service.generate(card));
+        Card card = CardBuilder.aCard()
+                .number(getNumber(context))
+                .build();
+        context.render(service.generate(card));
+    }
+
+    String getNumber(Context context)
+    {
+        return Optional.ofNullable(context.getPathTokens().get(CARD)).orElse(generateNumber());
     }
 }
