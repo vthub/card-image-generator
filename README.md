@@ -48,4 +48,4 @@ http://localhost:5050/card/1234567890123456?expiry=11/21&name=John&lastname=Smit
 
 The result will be as follows:
 
-![Example card](https://github.com/vthub/card-image-generator/raw/master/src/main/resources/example-card.png "Example c
+![Example card](https://github.com/vthub/card-image-generator/raw/master/src/main/resources/example-card.png =250px "Example card")
