@@ -5,6 +5,7 @@
 package vthub.cardgen;
 
 import com.google.inject.Inject;
+import org.apache.commons.lang.StringUtils;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
 import ratpack.util.MultiValueMap;
@@ -40,7 +41,10 @@ public class CardHandler implements Handler
 
     String getNumber(Context context)
     {
-        return Optional.ofNullable(context.getPathTokens().get(CARD)).orElse(generateNumber());
+        return Optional.ofNullable(context.getPathTokens().get(CARD))
+                .filter(StringUtils::isNotEmpty)
+                .filter(StringUtils::isNumeric)
+                .orElse(generateNumber());
     }
 
     String getExpiry(Context context)

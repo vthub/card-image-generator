@@ -1,4 +1,5 @@
-apply plugin: "java"
+apply plugin: 'java'
+apply plugin: 'application'
 
 ext {
     ratpackVersion = '1.4.4'
@@ -18,3 +19,5 @@ dependencies {
     testCompile 'junit:junit:4.11'
     testCompile group: 'io.ratpack', name: 'ratpack-test', version: "$ratpackVersion"
 }
+
+mainClassName = 'vthub.cardgen.App'

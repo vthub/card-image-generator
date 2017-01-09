@@ -22,7 +22,7 @@ public class App
                 .handlers(chain -> chain
                         .register(r -> r.add(new ImageRenderer()))
                         .path(format("card/:%s?", CARD), CardHandler.class)
-                        .all(ctx -> ctx.render(""))
+                        .all(ctx -> ctx.render(ctx.file("index.html")))
                 )
         );
     }
