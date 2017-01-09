@@ -33,4 +33,22 @@ public class CardGeneratorUtilsTest
         assertThat(luhnCheckDigit(stringToInts("670638622480593")), is(4));
     }
 
+    @Test
+    public void testGenerateNumber() throws Exception
+    {
+        String number = generateNumber();
+        assertThat(number.length(), is(16));
+        assertThat(luhnChecksum(stringToInts(number)), is(0));
+    }
+
+    @Test
+    public void testPrepareNumberForPrint() throws Exception
+    {
+        assertThat(prepareNumberForPrint(null), is(""));
+        assertThat(prepareNumberForPrint(""), is(""));
+        assertThat(prepareNumberForPrint("123"), is("123"));
+        assertThat(prepareNumberForPrint("1234"), is("1234"));
+        assertThat(prepareNumberForPrint("12345"), is("1234 5"));
+        assertThat(prepareNumberForPrint("1234567890"), is("1234 5678 90"));
+    }
 }

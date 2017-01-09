@@ -1,6 +1,7 @@
 package vthub.cardgen;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -53,6 +54,16 @@ public class CardGeneratorUtils
                 .boxed()
                 .map(Object::toString)
                 .collect(Collectors.joining());
+    }
+
+    public static String prepareNumberForPrint(String number)
+    {
+        String s = StringUtils.substring(number, 0, 19);
+        return IntStream.range(0, (int) Math.ceil((double) StringUtils.length(s) / 4))
+                .boxed()
+                .map(i -> StringUtils.substring(s, i * 4, (i + 1) * 4))
+                .filter(StringUtils::isNotEmpty)
+                .collect(Collectors.joining(" "));
     }
 
 }
