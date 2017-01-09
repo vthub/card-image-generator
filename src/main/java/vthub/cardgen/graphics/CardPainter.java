@@ -22,61 +22,67 @@ public class CardPainter
         graphics = image.createGraphics();
     }
 
-    public void drawCard()
+    protected void drawBackground(Card card)
     {
         graphics.setColor(Color.WHITE);
         graphics.fillRect(0, 0, CANVAS_WIDTH_PX, CANVAS_HEIGHT_PX);
+    }
 
-        graphics.setColor(Color.RED);
-        graphics.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL));
+    protected void drawCard(Card card)
+    {
+        GradientPaint gradientPaint = new GradientPaint(0, 0, new Color(0, 198, 255), WIDTH_PX, HEIGHT_PX, new Color(154, 255, 100));
+        graphics.setPaint(gradientPaint);
+        graphics.fillRoundRect(OFFSET_PX, OFFSET_PX, WIDTH_PX, HEIGHT_PX, CORNER_RADIUS_PX, CORNER_RADIUS_PX);
+
+        black();
+        graphics.setStroke(new BasicStroke(2, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL));
         graphics.drawRoundRect(OFFSET_PX, OFFSET_PX, WIDTH_PX, HEIGHT_PX, CORNER_RADIUS_PX, CORNER_RADIUS_PX);
     }
 
-    public void drawNumber()
+    protected void drawNumber(String number)
     {
-        String text = prepareNumberForPrint(card.getNumber());
-
         black();
         Font font = font(NUMBER_FONT_PX);
         FontMetrics metrics = graphics.getFontMetrics(font);
-        int x = (CANVAS_WIDTH_PX - metrics.stringWidth(text)) / 2;
-        graphics.drawString(text, x, NUMBER_Y_PX);
+        int x = (CANVAS_WIDTH_PX - metrics.stringWidth(number)) / 2;
+        graphics.drawString(number, x, NUMBER_Y_PX);
     }
 
-    public void drawExpiry()
+    protected void drawExpiry(String expiry)
     {
         black();
         font(EXPIRY_FONT_PX);
-        graphics.drawString("12/20", EXP_X_PX, EXP_Y_PX);
+        graphics.drawString(expiry, EXP_X_PX, EXP_Y_PX);
     }
 
-    public void drawCardHolder()
+    protected void drawCardHolder(String cardHolder)
     {
         black();
         font(NAME_FONT_PX);
-        graphics.drawString("CARD HOLDER", NAME_X_PX, NAME_Y_PX);
+        graphics.drawString(cardHolder, NAME_X_PX, NAME_Y_PX);
     }
 
-    public BufferedImage draw()
-    {
-        drawCard();
-        drawNumber();
-        drawExpiry();
-        drawCardHolder();
-        graphics.dispose();
-        return image;
-    }
-
-    public Font font(int size)
+    protected Font font(int size)
     {
         Font font = new Font("Courier New", Font.BOLD, size);
         graphics.setFont(font);
         return font;
     }
 
-    public void black()
+    protected void black()
     {
         graphics.setColor(Color.BLACK);
+    }
+
+    public BufferedImage draw()
+    {
+        drawBackground(card);
+        drawCard(card);
+        drawNumber(prepareNumberForPrint(card.getNumber()));
+        drawExpiry(card.getExpiry());
+        drawCardHolder(card.getCardHolder());
+        graphics.dispose();
+        return image;
     }
 
 }
