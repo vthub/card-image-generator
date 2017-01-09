@@ -14,7 +14,7 @@ To start the service you can use gradle:
 
 By default service will start on port **5050**.
 
-To generate a card with a random card number simply go to: http://localhost:5050/card
+To generate a card with a random card number simply go to: <http://localhost:5050/card>
 
 ## Customizing the card
 
@@ -22,7 +22,7 @@ You can customize values displayed on the card:
 
 ### Card number
 
-To generate card with specific card number append the card number after the full url. For example: http://localhost:5050/card/1234567890123456
+To generate card with specific card number append the card number after the full url. For example: <http://localhost:5050/card/1234567890123456>
 Card number can have any length between 1 and 19 digits.
 
 ### Expiry date
@@ -44,7 +44,7 @@ Let's say you want to generate a card that has the following data printed on it:
 
 The url that will allow you to generate an image with specified data is:
 
-http://localhost:5050/card/1234567890123456?expiry=11/21&name=John&lastname=Smith
+<http://localhost:5050/card/1234567890123456?expiry=11/21&name=John&lastname=Smith>
 
 The result will be as follows:
 
