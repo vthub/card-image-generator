@@ -1,3 +1,7 @@
+/*
+ * MIT License / Copyright (c) 2017 Vasilii Trofimchuk
+ */
+
 package vthub.cardgen.model;
 
 public class Card
