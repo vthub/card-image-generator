@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 
 import static vthub.cardgen.CardGeneratorUtils.prepareNumberForPrint;
 import static vthub.cardgen.graphics.CardSizes.*;
+import static vthub.cardgen.graphics.FontUtils.getFont;
 
 public class CardPainter
 {
@@ -68,7 +69,7 @@ public class CardPainter
 
     protected Font font(int size)
     {
-        Font font = new Font("Courier New", Font.BOLD, size);
+        Font font = new Font(getFont(), Font.BOLD, size);
         graphics.setFont(font);
         return font;
     }
