@@ -4,16 +4,20 @@
 
 package vthub.cardgen;
 
-import vthub.cardgen.graphics.CardPainter;
+import com.google.inject.Inject;
+import vthub.cardgen.graphics.DefaultCardPainterFactory;
 import vthub.cardgen.model.Card;
 
 import java.awt.image.BufferedImage;
 
 public class DefaultPainter implements Painter
 {
+    @Inject
+    private DefaultCardPainterFactory factory;
+
     @Override
     public BufferedImage draw(Card card)
     {
-        return new CardPainter(card).draw();
+        return factory.create(card).draw();
     }
 }
