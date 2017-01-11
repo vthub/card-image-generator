@@ -19,7 +19,6 @@ public class DefaultCardPainter implements CardPainter
 {
 
     private final Card card;
-    private final Specification specification;
     private final BufferedImage image;
     private final Graphics2D graphics;
     private final GraphicsService graphicsService;
@@ -32,7 +31,6 @@ public class DefaultCardPainter implements CardPainter
                               ResizerFactory resizerFactory)
     {
         this.card = card;
-        this.specification = specification;
         this.graphicsService = graphicsService;
         this.resizer = resizerFactory.create(specification);
 

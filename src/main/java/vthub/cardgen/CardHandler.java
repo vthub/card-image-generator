@@ -17,6 +17,8 @@ import vthub.cardgen.model.SpecificationBuilder;
 
 import java.time.LocalDate;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static vthub.cardgen.App.CARD;
 import static vthub.cardgen.CardGeneratorUtils.generateNumber;
@@ -34,17 +36,16 @@ public class CardHandler implements Handler
     @Override
     public void handle(Context context) throws Exception
     {
-        Card card = CardBuilder.aCard()
+        context.render(service.generate(createCard(context), createSpecification(context)));
+    }
+
+    Card createCard(Context context)
+    {
+        return CardBuilder.aCard()
                 .number(getNumber(context))
                 .expiry(getExpiry(context))
                 .cardHolder(getCardHolder(context))
                 .build();
-
-        Specification specification = SpecificationBuilder.aSpecification()
-                .width(getWidth(context))
-                .build();
-
-        context.render(service.generate(card, specification));
     }
 
     String getNumber(Context context)
@@ -66,12 +67,27 @@ public class CardHandler implements Handler
                 });
     }
 
+    /**
+     * Get name and last name from the context, from query parameters <code>name</code> and <code>lastname</code>.
+     * If either one is not provided it will be replaced with default value (<code>NAME</code> for name and <code>LASTNAME</code> for last name).
+     * If either one is empty, then empty string will be used to created full name
+     *
+     * @param context with query parameters
+     * @return full name of the card holder
+     */
     String getCardHolder(Context context)
     {
         MultiValueMap<String, String> queryParams = context.getRequest().getQueryParams();
         String name = Optional.ofNullable(queryParams.get("name")).map(String::toUpperCase).orElse("NAME");
         String lastName = Optional.ofNullable(queryParams.get("lastname")).map(String::toUpperCase).orElse("LASTNAME");
-        return String.format("%s %s", name, lastName);
+        return Stream.of(name, lastName).filter(StringUtils::isNotEmpty).collect(Collectors.joining(" "));
+    }
+
+    Specification createSpecification(Context context)
+    {
+        return SpecificationBuilder.aSpecification()
+                .width(getWidth(context))
+                .build();
     }
 
     int getWidth(Context context)
