@@ -6,7 +6,9 @@ package vthub.cardgen;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import vthub.cardgen.graphics.CardPainterFactory;
 import vthub.cardgen.model.Card;
+import vthub.cardgen.model.Specification;
 
 import java.awt.image.BufferedImage;
 
@@ -14,17 +16,17 @@ import java.awt.image.BufferedImage;
 public class CardService
 {
 
-    private final Painter painter;
+    private final CardPainterFactory factory;
 
     @Inject
-    public CardService(Painter painter)
+    public CardService(CardPainterFactory factory)
     {
-        this.painter = painter;
+        this.factory = factory;
     }
 
-    public BufferedImage generate(Card card)
+    public BufferedImage generate(Card card, Specification specification)
     {
-        return painter.draw(card);
+        return factory.create(card, specification).draw();
     }
 
 }

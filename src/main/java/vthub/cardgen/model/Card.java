@@ -7,18 +7,20 @@ package vthub.cardgen.model;
 public class Card
 {
 
-    private String number;
-    private String expiry;
-    private String cardHolder;
+    private final String number;
+    private final String expiry;
+    private final String cardHolder;
+
+    public Card(String number, String expiry, String cardHolder)
+    {
+        this.number = number;
+        this.expiry = expiry;
+        this.cardHolder = cardHolder;
+    }
 
     public String getNumber()
     {
         return number;
-    }
-
-    public void setNumber(String number)
-    {
-        this.number = number;
     }
 
     public String getExpiry()
@@ -26,18 +28,9 @@ public class Card
         return expiry;
     }
 
-    public void setExpiry(String expiry)
-    {
-        this.expiry = expiry;
-    }
-
     public String getCardHolder()
     {
         return cardHolder;
     }
 
-    public void setCardHolder(String cardHolder)
-    {
-        this.cardHolder = cardHolder;
-    }
 }

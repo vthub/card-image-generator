@@ -4,11 +4,11 @@
 
 package vthub.cardgen.graphics;
 
-import vthub.cardgen.model.Card;
 import vthub.cardgen.model.Specification;
 
-public interface CardPainterFactory {
+public interface ResizerFactory
+{
 
-    CardPainter create(Card card, Specification specification);
+    Resizer create(Specification specification);
 
 }

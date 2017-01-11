@@ -34,10 +34,6 @@ public final class CardBuilder
 
     public Card build()
     {
-        Card card = new Card();
-        card.setNumber(number);
-        card.setExpiry(expiry);
-        card.setCardHolder(cardHolder);
-        return card;
+        return new Card(number, expiry, cardHolder);
     }
 }
