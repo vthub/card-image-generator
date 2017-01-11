@@ -16,7 +16,7 @@ By default service will start on port **5050**.
 
 To generate a card with a random card number simply go to: <http://localhost:5050/card>
 
-## Customizing the card
+## Customizing the card details
 
 You can customize values displayed on the card:
 
@@ -33,6 +33,16 @@ For example, to have expiry date `11/21` printed on a card, use the following pa
 ### Card Holder name
 
 You can also specify card holder first and last name. To do this use `name` and `lastname` query parameters respectively. For example `card/?name=John&lastname=Smith`. 
+
+## Customizing the card output
+
+### Size
+
+You can specify the width of the final output image using `width` query parameter.
+
+For example, to have a card of size `500px` use the following uri: `/card/?width=500`.
+
+Maximum allowed size `1000px`, the smallest card you can generate is `200px`.
 
 # Example
 
