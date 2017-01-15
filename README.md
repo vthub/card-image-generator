@@ -59,3 +59,15 @@ The url that will allow you to generate an image with specified data is:
 The result will be as follows:
 
 ![Example card](https://github.com/vthub/card-image-generator/raw/master/src/main/resources/example-card.png "Example card")
+
+# Running service with Docker
+
+To run service inside separate docker container use the following commands:
+
+```
+$ cd card-generator
+$ docker build -t card-generator .
+$ docker run -d -p 8080:5050 --name card-generator card-generator
+```
+
+This will start card generation service on port `8080` of the host.
