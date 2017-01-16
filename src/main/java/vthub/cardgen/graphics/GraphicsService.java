@@ -22,7 +22,7 @@ public class GraphicsService {
     private static final String[] FONTS = {
             "Courier New",
             "Courier 10 Pitch",
-            "Cursor",
+            "FreeMono",
             "Monospaced"
     };
 
@@ -35,7 +35,7 @@ public class GraphicsService {
 
     public String getFont() {
         List<String> availableFonts = getAvailableFonts();
-        return Arrays.stream(FONTS).filter(availableFonts::contains).findFirst().orElse("SansSerif");
+        return Arrays.stream(FONTS).filter(availableFonts::contains).findFirst().orElse("Monospaced");
     }
 
 }
